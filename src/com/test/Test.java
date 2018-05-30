@@ -3,6 +3,7 @@ package com.test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -84,7 +85,24 @@ public class Test {
 		
 		LogService logService = () -> System.out.println("log");
 		logService.log();
+	}
+	
+	public static void testHash() {
 		
+		Hashtable<Object, Long> lock = new Hashtable<>();
+		Hashtable<Object, Long> unlock = new Hashtable<>();
+		
+		Enumeration<Object> keys = unlock.keys();
+		while(keys.hasMoreElements()) {
+			Object object = keys.nextElement();
+			
+			//check if object is not expired
+			
+			//if not expired, perform validate
+			//if valid, return t
+			
+			//else create new object
+		}
 	}
 	
 }
