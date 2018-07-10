@@ -7,8 +7,7 @@ public class BinarySearch {
 	public int binarySearch(int[] arr, int low, int high, int num) {
 		
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println("low=" + low + " high="
-				+ "" + high);
+		System.out.println("low=" + low + " high= " + high);
 		int match = -1;//default not found
 		
 		//check if num in range

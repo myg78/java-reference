@@ -1,17 +1,16 @@
 package com.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import java.util.Queue;
+import java.util.Stack;
 import java.util.TreeSet;
-import java.util.Vector;
+
+import javax.management.Query;
 
 import com.test.beans.Car;
 import com.test.service.LogService;
@@ -20,12 +19,15 @@ import com.test.service.TestService;
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println("Hello world");
+		System.out.println("Main");
 		//System.out.println("Test again");
 //		testString();
 //		testSet();
 //		testCar();
-		testLambda();
+//		testLambda();
+//		testInput(args);
+//		testQueue();
+		testStack();
 	}
 	
 	public static void testString() {
@@ -103,6 +105,41 @@ public class Test {
 			
 			//else create new object
 		}
+	}
+	
+	public static void testLinkedList() {
+		
+		List<String> list = new LinkedList<>();
+		
+	}
+	
+	public static void testInput(String[] args) {
+		for (int i = 0; i < args.length; i++) {
+			System.out.println("arg: " + args[i]);
+		}
+	}
+	
+	public static void testQueue() {
+
+		Queue<String> queue = new LinkedList<>();
+		queue.add("peter");
+		queue.add("tony");
+		queue.add("steve");
+		
+		System.out.println(queue.remove());
+		System.out.println(queue.remove());
+		System.out.println(queue.peek());
+	}
+	
+	public static void testStack() {
+		
+		Stack<String> stack = new Stack<>();
+		stack.push("peter");
+		stack.push("tony");
+		stack.push("steve");
+		
+		System.out.println(stack.pop());
+		System.out.println(stack.pop());
 	}
 	
 }

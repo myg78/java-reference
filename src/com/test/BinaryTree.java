@@ -1,5 +1,8 @@
 package com.test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
 	
 	private Node root;
@@ -37,6 +40,7 @@ public class BinaryTree {
 //		System.out.println("match=" + match);
 		
 		binaryTree.traverse();
+		binaryTree.traverseLevelOrder();
 		System.out.println();
 	}
 	
@@ -48,7 +52,7 @@ public class BinaryTree {
 		
 		System.out.println("~~~~~~~~~~~~");
 		System.out.println("addNode=" + num);
-		if(node==null) {
+		if(node == null) {
 			System.out.println("new node");
 			return new Node(num);
 		}
@@ -56,14 +60,14 @@ public class BinaryTree {
 		int currentValue = node.getValue();
 		System.out.println("current=" + currentValue);
 		
-		if(num==currentValue) {
+		if(num == currentValue) {
 			System.out.println("match current");
 		}
-		else if(num<currentValue) {
+		else if(num < currentValue) {
 			System.out.println("check left");
 			node.setLeft(addNode(node.getLeft(), num));
 		}
-		else if(num>currentValue) {
+		else if(num > currentValue) {
 			System.out.println("check right");
 			node.setRight(addNode(node.getRight(), num));
 		}
@@ -119,6 +123,33 @@ public class BinaryTree {
 			traverseNode(node.getLeft());
 			traverseNode(node.getRight());
 		}
+	}
+	
+	private void traverseLevelOrder() {
+		
+		System.out.println("traverseLevelOrder:");
+		
+	    if (this.root == null) {
+	        return;
+	    }
+	 
+	    Queue<Node> nodes = new LinkedList<>();
+	    nodes.add(this.root);
+	 
+	    while (!nodes.isEmpty()) {
+	 
+	        Node node = nodes.remove();
+	 
+	        System.out.print(" " + node.getValue());
+	 
+	        if (node.getLeft() != null) {
+	            nodes.add(node.getLeft());
+	        }
+	 
+	        if (node.getRight() != null) {
+	            nodes.add(node.getRight());
+	        }
+	    }
 	}
 	
 }
