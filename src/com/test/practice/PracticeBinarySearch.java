@@ -1,4 +1,4 @@
-package com.test;
+package com.test.practice;
 
 public class PracticeBinarySearch {
 	
