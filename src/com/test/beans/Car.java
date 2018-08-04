@@ -6,6 +6,14 @@ public class Car {
 	private String make;
 	private String model;
 	
+	public Car() {}
+	
+	public Car(String year, String make, String model) {
+		this.year = year;
+		this.make = make;
+		this.model = model;
+	}
+	
 	public String getYear() {
 		return year;
 	}
@@ -23,6 +31,9 @@ public class Car {
 	}
 	public void setModel(String model) {
 		this.model = model;
+	}
+	public void printCar() {
+		System.out.println(year + " " + make +  " " + model);
 	}
 	
 }

@@ -6,4 +6,8 @@ public class StaticClass {
 		System.out.println("doSomething " + param);
 	}
 	
+	public static String returnSomething(String param) {
+		return "returned " + param;
+	}
+	
 }

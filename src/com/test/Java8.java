@@ -6,6 +6,8 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.test.beans.Car;
+import com.test.beans.Person;
 import com.test.service.LogService;
 import com.test.service.LogServiceImpl;
 import com.test.service.PrintService;
@@ -22,8 +24,8 @@ public class Java8 {
 		//testDefaultInterface();
 		//testStreamFilter();
 		//testStreamMatch();
-		//testStreamMapReduce();
-		testMethodReference();
+		testStreamMapReduce();
+		//testMethodReference();
 	}
 	
 	private static void testLambda() {
@@ -149,6 +151,7 @@ public class Java8 {
 	
 	private static void testStreamMapReduce() {
 		
+		//
 		List<String> list = new ArrayList<>();
 		list.add("Alice");
 		list.add("tony");
@@ -156,14 +159,52 @@ public class Java8 {
 		list.add("cD");
 		list.add("FEED");
 		
+		//map uppercase
 		Stream<String> stream = list.stream();
-		Stream<String> mapped = stream.map((i)-> i.toUpperCase());
-		mapped.forEach((i)->System.out.println("i="+ i));
+		//Stream<String> mapped = stream.map((i)-> i.toUpperCase());
+		Stream<String> mapped = stream.map(String::toUpperCase);
+		//mapped.forEach((i)->System.out.println("i="+ i));
+		mapped.forEach(System.out::println);
 		
+		//reduce integer sum
 		Stream<Integer> numbers = Stream.of(1,2,3,4,5);
 		//int sum = numbers.reduce(0, (x,y)->x+y);
 		int sum = numbers.reduce(0, Integer::sum);
 		System.out.println("sum=" + sum);
+		
+		//map reduce
+		List<Person> persons = new ArrayList<>(); 
+		persons.add(new Person("tony", "male", 27));
+		persons.add(new Person("peter", "male", 18));
+		persons.add(new Person("bruce", "male", 29));
+		persons.add(new Person("natasha", "female", 21));
+		persons.add(new Person("wanda", "female", 20));
+		
+		//map males
+		List<String> females = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("female")).map(Person::getName).collect(Collectors.toList());
+		females.forEach(System.out::println);
+		
+		//map reduce sum
+		int sumMaleAges = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+										  .mapToInt((p)->p.getAge())
+										  .reduce(0, (x,y)->x+y);
+		
+		int sumMaleAges2 = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+										   .mapToInt(Person::getAge)
+										   .reduce(0, Integer::sum);
+		
+		int sumMaleAges3 = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+										   .mapToInt(Person::getAge).sum();
+		
+		System.out.println("sumMaleAges: " + sumMaleAges);
+		System.out.println("sumMaleAges2: " + sumMaleAges2);
+		System.out.println("sumMaleAges3: " + sumMaleAges3);
+		
+		//map reduce average
+		double avgMaleAges = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+											 .mapToInt(Person::getAge)
+											 .average().getAsDouble();
+		System.out.println("avgMaleAges: " + avgMaleAges);
 	}
 	
 	private static void testMethodReference() {
@@ -171,8 +212,29 @@ public class Java8 {
 		PrintService printService1 = (param) -> System.out.println("print " + param);
 		printService1.print("mykz");
 		
-		PrintService printService2 = StaticClass::doSomething;
-		printService2.print("kimi");
+		PrintService printService2 = System.out::println;
+		printService2.print("peter");
+		
+		PrintService printService3 = StaticClass::doSomething;
+		printService3.print("kimi");
+		
+		PrintService printService4 = (param)->StaticClass.returnSomething(param);
+		printService4.print("tony");
+		
+		PrintService printService5 = StaticClass::returnSomething;
+		printService5.print("bruce");
+		
+		List<Car> cars = new ArrayList<>();
+		cars.add(new Car("2016", "Honda", "Civic"));
+		cars.add(new Car("2017", "Chevrolet", "Camaro"));
+		cars.add(new Car("2018", "Ford", "Mustang"));
+		
+		cars.forEach(Car::printCar);
+		cars.forEach((param)->{
+			String str = param.getMake();
+			StaticClass.doSomething(str);
+		});
+		
 	}
 	
 }
