@@ -2,7 +2,7 @@ package com.test.practice;
 
 import java.util.Arrays;
 
-public class ArrayDuplicates2 {
+public class ArrayRemoveDuplicates2 {
 
 	public static void main(String[] args) {
 		

@@ -34,9 +34,10 @@ public class PrintUtil {
 	}
 	
 	public static void printArray(int[] array) {
-		for (int i = 0; i < array.length; i++) {
+		/*for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
-		}
+		}*/
+		Arrays.stream(array).forEach(System.out::println);
 	}
 	
 	public static void printArrayLine(int[] array) {
