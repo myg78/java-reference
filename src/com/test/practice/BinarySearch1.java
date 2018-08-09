@@ -1,6 +1,6 @@
 package com.test.practice;
 
-public class PracticeBinarySearch {
+public class BinarySearch1 {
 	
 	public static void main(String[] args) {
 		System.out.println("code demo");

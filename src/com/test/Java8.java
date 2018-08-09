@@ -99,6 +99,9 @@ public class Java8 {
 			System.out.println(text);
 		 }
 		);
+		
+		//forEach method reference
+		list.forEach(System.out::println);
 	}
 	
 	private static void testDefaultInterface() {
