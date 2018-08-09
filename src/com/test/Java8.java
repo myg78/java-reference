@@ -184,19 +184,19 @@ public class Java8 {
 		persons.add(new Person("wanda", "female", 20));
 		
 		//map males
-		List<String> females = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("female")).map(Person::getName).collect(Collectors.toList());
+		List<String> females = persons.stream().filter(p->p.getGender().equalsIgnoreCase("female")).map(Person::getName).collect(Collectors.toList());
 		females.forEach(System.out::println);
 		
 		//map reduce sum
-		int sumMaleAges = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
-										  .mapToInt((p)->p.getAge())
+		int sumMaleAges = persons.stream().filter(p->p.getGender().equalsIgnoreCase("male"))
+										  .mapToInt(p->p.getAge())
 										  .reduce(0, (x,y)->x+y);
 		
-		int sumMaleAges2 = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+		int sumMaleAges2 = persons.stream().filter(p->p.getGender().equalsIgnoreCase("male"))
 										   .mapToInt(Person::getAge)
 										   .reduce(0, Integer::sum);
 		
-		int sumMaleAges3 = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+		int sumMaleAges3 = persons.stream().filter(p->p.getGender().equalsIgnoreCase("male"))
 										   .mapToInt(Person::getAge).sum();
 		
 		System.out.println("sumMaleAges: " + sumMaleAges);
@@ -204,7 +204,7 @@ public class Java8 {
 		System.out.println("sumMaleAges3: " + sumMaleAges3);
 		
 		//map reduce average
-		double avgMaleAges = persons.stream().filter((p)->p.getGender().equalsIgnoreCase("male"))
+		double avgMaleAges = persons.stream().filter(p->p.getGender().equalsIgnoreCase("male"))
 											 .mapToInt(Person::getAge)
 											 .average().getAsDouble();
 		System.out.println("avgMaleAges: " + avgMaleAges);

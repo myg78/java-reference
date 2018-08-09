@@ -7,14 +7,17 @@ public class QuickSort {
 		
 		int array[] = {10, 4, 2, 7, 3, 8, 9, 1, 6, 5};
 		//int array[] = {3, 10, 7, 13, 2, 8, 6, 18, 9, 1, 5, 12, 15};
-        int size = array.length;
         print(array);
  
         QuickSort quickSort = new QuickSort();
-        quickSort.sort(array, 0, size-1);
+        quickSort.sort(array);
  
         System.out.println("sorted array");
         print(array);
+	}
+	
+	private void sort(int[] array) {
+		sort(array, 0, array.length-1);
 	}
 	
 	private void sort(int[] array, int low, int high) {
