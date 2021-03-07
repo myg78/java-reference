@@ -35,5 +35,13 @@ public class Car {
 	public void printCar() {
 		System.out.println(year + " " + make +  " " + model);
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Car{" +
+				"year='" + year + '\'' +
+				", make='" + make + '\'' +
+				", model='" + model + '\'' +
+				'}';
+	}
 }
