@@ -17,7 +17,8 @@ public class ArraysUtil {
 //        copy();
 //        sort();
 //        compare();
-        fill();
+//        fill();
+        binarySearch();
     }
 
     public static void format() {
@@ -57,6 +58,10 @@ public class ArraysUtil {
         Arrays.sort(sorted);
         System.out.println(Arrays.toString(unsorted));
         System.out.println(Arrays.toString(sorted));
+
+        int[] sorted2 = Arrays.copyOf(unsorted, unsorted.length);
+        Arrays.parallelSort(sorted2);
+        System.out.println(Arrays.toString(sorted2));
     }
 
     public static void compare() {
@@ -86,6 +91,9 @@ public class ArraysUtil {
         System.out.println(Arrays.toString(ints));
     }
 
-    public static void test() {
+    public static void binarySearch() {
+        int[] ints = {1,2,3,4,5,6,7,8,9};
+        System.out.println(Arrays.binarySearch(ints, 6));
     }
+
 }
